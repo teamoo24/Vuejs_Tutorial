@@ -21,6 +21,12 @@
 				this.todos.push(this.newItem);
 				// pushした後にnewItemを空文字にする
 				this.newItem = '';
+			},
+
+			deleteItem: function(index){
+				if (confirm('削除しましょうか？')) {
+					this.todos.splice(index, 1);
+				}
 			}
 		}
 	});
