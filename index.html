@@ -9,14 +9,20 @@
 
 	<div id="app" class="container">
 		<h1>My Todos</h1>
-		<ul>
-			<li v-for = "(todo,index) in todos"> 
+		<ul v-if="todos.length">
+			<!-- このままだとv-forがv-ifより先に実行されるのでv-ifが実行されない -->
+			<!-- <li v-if="todos.length" v-for = "(todo,index) in todos">  -->
+			<!-- なのでv-ifはulに付けてあげる -->
+			<li v-for = "(todo,index) in todos">
 				<input type="checkbox" v-model="todo.isDone">
 				<span :class="{done: todo.isDone}">{{ todo.title }}</span>
 				<span @click="deleteItem(index)" class="command">[x]</span>
 			</li>
 			<!-- todosに何も入ってない時にliの中身をみる -->
-			<li v-show="!todos.length">Nothing to do, yay!</li>
+			
+		</ul>
+		<ul v-else>
+			<li>Nothing to do, yay!</li>
 		</ul>
 		<form @submit.prevent="addItem">
 			<input type="text" v-model="newItem">
