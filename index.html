@@ -12,8 +12,13 @@
 		<ul>
 			<li v-for = "todo in todos"> {{ todo }} </li>
 		</ul>
-		<form>
-			<input type="text">
+		<!-- <form v-on:submit="addItem"> -->
+		<!-- v-on はよく使うので @ で @submit のように省略することもできるので、覚えておきましょう。 -->
+		<!-- <form @submit="addItem">は<form v-on:submit="addItem">と同じ -->
+		<!-- <form @submit="addItem"> -->
+		<!-- preventを付けてあげないとsubmitした時に再読み込みされてしまいます -->
+		<form @submit.prevent="addItem">
+			<input type="text" v-model="newItem">
 			<input type="submit" value="Add">
 		</form>
 	</div>
