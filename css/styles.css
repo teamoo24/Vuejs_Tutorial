@@ -37,3 +37,9 @@ body {
 	cursor: pointer;
 	color: #06c;
 }
+
+.info {
+	color: #bbb;
+	font-size: 12px;
+	font-weight: normal;
+}
