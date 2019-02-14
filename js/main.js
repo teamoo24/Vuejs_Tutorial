@@ -6,20 +6,25 @@
 		el: '#app',
 		data: {
 			newItem : '',
-			todos: [
-				'task 1',
-				'task 2',
-				'task 3'
-			]
+			todos: [{
+				title:'task 1',
+				isDone: false
+			}, {
+				title:'task 2',
+				isDone: false
+			}, {
+				title:'task 3',
+				isDone: true
+			}]
 		},
 		methods: {
 			// ここでaddItemを自邸
 			addItem: function(){
-				// submitを押した時に再読み込みを防ぐ
-				// e.preventDefault();
-				// todos配列にnewItemの中身を追加
-				this.todos.push(this.newItem);
-				// pushした後にnewItemを空文字にする
+				var item = {
+					title: this.newItem,
+					isDone: false
+				};
+				this.todos.push(item);
 				this.newItem = '';
 			},
 

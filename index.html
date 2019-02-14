@@ -11,14 +11,14 @@
 		<h1>My Todos</h1>
 		<ul>
 			<li v-for = "(todo,index) in todos"> 
-				{{ todo }} 
+				<!-- checkboxを追加してisDoneを紐づける -->
+				<input type="checkbox" v-model="todo.isDone">
+				<!-- todoのisDoneがtrueの場合doneクラスを付ける -->
+				<!-- <span v-bind:class="{done: todo.isDone}">{{ todo.title }}</span> -->
+				<!-- v-bindもよく使われるのでv-bind:classは:classと同じ扱いをされる -->
+				<span :class="{done: todo.isDone}">{{ todo.title }}</span>
 				<span @click="deleteItem(index)" class="command">[x]</span></li>
 		</ul>
-		<!-- <form v-on:submit="addItem"> -->
-		<!-- v-on はよく使うので @ で @submit のように省略することもできるので、覚えておきましょう。 -->
-		<!-- <form @submit="addItem">は<form v-on:submit="addItem">と同じ -->
-		<!-- <form @submit="addItem"> -->
-		<!-- preventを付けてあげないとsubmitした時に再読み込みされてしまいます -->
 		<form @submit.prevent="addItem">
 			<input type="text" v-model="newItem">
 			<input type="submit" value="Add">
